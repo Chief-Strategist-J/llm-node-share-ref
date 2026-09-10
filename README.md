@@ -20,3 +20,4 @@ npm install @chief-strategist-j/shared-infra
 
 MIT
 
+<!-- CI test run -->
