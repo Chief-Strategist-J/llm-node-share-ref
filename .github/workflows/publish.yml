@@ -35,14 +35,22 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Auto-Bump Patch Version if Already Published
+      - name: Auto-Bump Patch Version & Commit to Git
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
           EXISTING_VERSION=$(npm view @chief-strategist-j/shared-infra version 2>/dev/null || echo "")
           CURRENT_VERSION=$(node -p "require('./package.json').version")
-          if [ -n "$EXISTING_VERSION" ] && [ "$EXISTING_VERSION" = "$CURRENT_VERSION" ]; then
-            echo "Version $CURRENT_VERSION already published on registry. Auto-bumping patch version..."
-            npm version patch --no-git-tag-version
+          
+          if [ "$EXISTING_VERSION" = "$CURRENT_VERSION" ]; then
+            echo "Version $CURRENT_VERSION is already published. Auto-bumping patch version..."
+            npm version patch -m "chore(release): v%s [skip ci]"
+            git push origin main --follow-tags
+          else
+            echo "Version $CURRENT_VERSION is ready to publish."
           fi
 
       - name: Publish to GitHub Packages
         run: npm publish
+
