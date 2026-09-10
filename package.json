@@ -1,7 +1,11 @@
 {
   "name": "@chief-strategist-j/shared-infra",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Core engine: httpClient, adapters, decorators, event bus, rules engine, feature flags, centralized OpenTelemetry & messaging tracing",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chief-Strategist-J/llm-node-share-ref.git"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
