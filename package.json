@@ -1,6 +1,6 @@
 {
   "name": "@chief-strategist-j/shared-infra",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Core engine: httpClient, adapters, decorators, event bus, rules engine, feature flags, centralized OpenTelemetry & messaging tracing",
   "repository": {
     "type": "git",
@@ -82,12 +82,13 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "publish:github": "./scripts/deployment/publish.sh",
+    "publish:npm": "./scripts/deployment/publish-npm.sh",
     "prepublishOnly": "npm run typecheck && npm run build"
   },
   "dependencies": {
