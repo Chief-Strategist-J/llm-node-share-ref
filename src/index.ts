@@ -9,5 +9,6 @@ export * from './messaging';
 export * from './tracing';
 export * from './discovery';
 export * from './utils';
+export * from './cache';
 
 export * from 'zod';
